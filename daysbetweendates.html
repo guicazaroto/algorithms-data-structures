@@ -1,0 +1,62 @@
+<script>
+function nextDay(init, end) {
+  this.initYear = init.year
+  this.initMonth = init.month
+  this.initDay = init.day
+  
+  if(this.initDay < 30) {
+    this.initDay++
+  } else {
+    this.initDay = 1
+    this.initMonth++
+  }
+
+  if(this.initMonth > 12) {
+    this.initYear++
+    this.initDay = 1
+    this.initMonth = 1
+  }
+
+  return {year: this.initYear, month: this.initMonth, day: this.initDay}
+}
+
+function daysBetweenDates(initDate, endDate) {
+  let days = 0;
+  let next = initDate
+  
+  // if initDate comes before endDate
+  console.log(validateInputs(initDate, endDate))
+
+  // while(!compareObjects(next, endDate)) {
+  //   next = nextDay(next)
+  //   days++
+  // }
+  // return days
+}
+
+function validateInputs (initDate, endDate) {
+  if(initDate.year > endDate.year) return false
+  if(initDate.year == endDate.year) {
+    if(initDate.month > endDate.month) return false
+    if(initDate.month == endDate.month) {
+      if(!(initDate.day < endDate.day)) return false
+    }
+  }
+  return true
+}
+
+function compareObjects (initDate, endDate) {
+  return (
+    Object.entries(initDate).toString() === Object.entries(endDate).toString()
+  )
+}
+
+daysBetweenDates({ year: 1999, month: 12, day: 29 }, { year: 2000, month: 1, day: 29 })
+daysBetweenDates({ year: 2012, month: 1, day: 1 }, { year: 2013, month: 1, day: 1 })
+daysBetweenDates({ year: 2012, month: 9, day: 3 }, { year: 2012, month: 9, day: 4 })
+
+daysBetweenDates({ year: 2012, month: 10, day: 4 }, { year: 2012, month: 9, day: 4 })
+daysBetweenDates({ year: 2012, month: 9, day: 6 }, { year: 2012, month: 9, day: 4 })
+daysBetweenDates({ year: 2020, month: 9, day: 1 }, { year: 2012, month: 9, day: 4 })
+
+</script>
