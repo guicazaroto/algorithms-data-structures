@@ -36,11 +36,9 @@ function daysBetweenDates(initDate, endDate) {
 
 function validateInputs (initDate, endDate) {
   if(initDate.year > endDate.year) return false
-  if(initDate.year == endDate.year) {
+  if (initDate.year == endDate.year) {
     if(initDate.month > endDate.month) return false
-    if(initDate.month == endDate.month) {
-      if(!(initDate.day < endDate.day)) return false
-    }
+    if(initDate.month == endDate.month) return (initDate.day < endDate.day)
   }
   return true
 }
