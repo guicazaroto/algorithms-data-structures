@@ -25,13 +25,15 @@ function daysBetweenDates(initDate, endDate) {
   let next = initDate
   
   // if initDate comes before endDate
-  console.log(validateInputs(initDate, endDate))
+  if(!validateInputs(initDate, endDate)) {
+    return 'Data inválida!'
+  }
 
-  // while(!compareObjects(next, endDate)) {
-  //   next = nextDay(next)
-  //   days++
-  // }
-  // return days
+  while(!compareObjects(next, endDate)) {
+    next = nextDay(next)
+    days++
+  }
+  return days
 }
 
 function validateInputs (initDate, endDate) {
@@ -49,12 +51,12 @@ function compareObjects (initDate, endDate) {
   )
 }
 
-daysBetweenDates({ year: 1999, month: 12, day: 29 }, { year: 2000, month: 1, day: 29 })
-daysBetweenDates({ year: 2012, month: 1, day: 1 }, { year: 2013, month: 1, day: 1 })
-daysBetweenDates({ year: 2012, month: 9, day: 3 }, { year: 2012, month: 9, day: 4 })
-
-daysBetweenDates({ year: 2012, month: 10, day: 4 }, { year: 2012, month: 9, day: 4 })
-daysBetweenDates({ year: 2012, month: 9, day: 6 }, { year: 2012, month: 9, day: 4 })
-daysBetweenDates({ year: 2020, month: 9, day: 1 }, { year: 2012, month: 9, day: 4 })
-
+console.log(
+  'result: ' + daysBetweenDates({ year: 1999, month: 12, day: 29 }, { year: 2000, month: 1, day: 29 }),
+  'result: ' + daysBetweenDates({ year: 2012, month: 1, day: 1 }, { year: 2013, month: 1, day: 1 }),
+  'result: ' + daysBetweenDates({ year: 2012, month: 9, day: 3 }, { year: 2012, month: 9, day: 4 }),
+  'result: ' + daysBetweenDates({ year: 2012, month: 10, day: 4 }, { year: 2012, month: 9, day: 4 }),
+  'result: ' + daysBetweenDates({ year: 2012, month: 9, day: 6 }, { year: 2012, month: 9, day: 4 }),
+  'result: ' + daysBetweenDates({ year: 2020, month: 9, day: 1 }, { year: 2012, month: 9, day: 4 })
+)
 </script>
